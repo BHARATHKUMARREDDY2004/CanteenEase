@@ -1,0 +1,1198 @@
+<ItemLarge@RelativeLayout>:
+    source: ""
+    title: ""
+    category: ""
+    item_id: ""
+    size_hint: None, 1
+    width: 300
+
+    MDSmartTile:
+        size_hint: 1, 1 
+        pos_hint: {"top": 1}
+        source: root.source
+        radius: app.scale(16)
+        lines: 2
+        box_radius: [0, 0, app.scale(16), app.scale(16)]
+        box_color: 0, 0, 0, .8
+        fit_mode: "cover"
+        on_press: app.load_item_detail(root.item_id, "home")
+
+        MDIconButton:
+            icon: "food-fork-drink"
+            theme_icon_color: "Custom"
+            icon_color: 1, 1, 1, 1
+            _no_ripple_effect: True
+
+        TwoLineListItem:
+            text: root.title
+            secondary_text: root.category
+            pos_hint: {"center_y": .5}
+            _no_ripple_effect: True
+
+<ItemMedium>:
+    source: ""
+    title: ""
+    category: ""
+    item_id: ""
+    from_screen: ""
+    size_hint: 1, 1
+
+    MDSmartTile:
+        size_hint: 1, 1 
+        pos_hint: {"top": 1}
+        source: root.source
+        radius: app.scale(10)
+        # lines: 2
+        box_radius: [0, 0, app.scale(10), app.scale(10)]
+        box_color: 0, 0, 0, .8
+        fit_mode: "cover"
+        on_press: app.load_item_detail(root.item_id, root.from_screen)
+
+
+        MDLabel:
+            size_hint_y: 0.40
+            text: root.title
+            markup: True
+            color: 1, 1, 1, 1
+            pos_hint: {"center_y": .5}
+        # TwoLineListItem:
+        #     text: root.title
+        #     secondary_text: root.category
+        #     pos_hint: {"center_y": .5}
+        #     _no_ripple_effect: True
+
+<NoResults>:
+    BoxLayout:
+        orientation: "vertical"
+        size_hint: 1, None
+        height: self.minimum_height
+        pos_hint: {"top": 1}
+        spacing: app.scale(80)
+        padding: [0, app.scale(100), 0, 0]
+
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "center"
+            Image:
+                source: "images/not-found-img.png"
+                size_hint: None, None
+                size: app.scale(200), app.scale(104.205)
+
+        MDLabel:
+            text_size: self.size
+            halign: "center"
+            valign: "top"
+            bold: True
+            font_size: app.scale(20)
+            text: 'No Food Items found!'
+            color: 0.3529, 0.07843, 0, 1
+
+        # BoxLayout:
+        #     orientation: "vertical"
+        #     padding: [0, app.scale(-30), 0, 0]
+        #     MDRaisedButton:
+        #         text: "Back to home"
+        #         size_hint_x: 1
+        #         md_bg_color: 0.3529, 0.078, 0, 1
+        #         text_color: "#ffffff"
+        #         on_press: app.sm.current = 'home'
+
+# <AccountScreen>:
+#     name: "profile"
+#     ScrollView:
+#         BoxLayout:
+#             orientation: "vertical"
+#             padding: app.scale(15)
+#             spacing: app.scale(20)
+#             size_hint_y: None
+#             height: self.minimum_height  # This ensures the ScrollView knows the correct height to scroll
+
+#             # BoxLayout:
+#             #     orientation: "horizontal"
+#             #     size_hint_y: None
+#             #     height: app.scale(70)
+
+
+#             #     MDLabel:
+#             #         text: "Profile"
+#             #         font_style: "H5"
+#             #         size_hint_x: 1
+#             #         halign: "center"
+#             #         valign: "middle"
+#             #         pos_hint: {"center_y": .5}
+#             #         color: 0.3529, 0.07843, 0, 1 
+#             # BoxLayout:
+#             #     orientation: "horizontal"
+#             #     size_hint_x: 1
+#             #     size_hint_y: None
+#             #     height: self.minimum_height
+#             #     # spacing: app.scale(10)
+#             #     pos_hint: {"top": 1}
+#             BoxLayout:
+#                 orientation: "horizontal"
+#                 size_hint_y: None
+#                 height: app.scale(70)
+
+
+#                 MDIconButton:
+#                     # icon: "arrow-left-drop-circle-outline"
+#                     # theme_icon_color: "Custom"
+#                     # icon_color: "#ffffff"
+#                     # md_bg_color: "#5A1400"
+#                     # pos_hint: {"center_y": .5}
+
+#                     icon: "chevron-left"
+#                     theme_icon_color: "Custom"
+#                     icon_color: "#000000"  # Black arrow icon
+#                     icon_size: app.scale(19)
+#                     pos_hint: {"center_y": .5}
+#                     on_press: app.sm.current = "home"
+#                     # icon_size: app.scale(19)
+#                     # pos_hint: {"top": 0.97}
+#                     # icon: "chevron-left"
+#                     # halign: "left"
+#                     # on_press: app.sm.current = "home"
+
+#                 # MDLabel:
+#                 #     text: "Profile"
+#                 #     text_size: self.size
+#                 #     halign: "center"
+#                 #     valign: "top"
+#                 #     bold: True
+#                 #     font_size: app.scale(26)
+#                 #     pos_hint: {"top": 0.97}
+#                 #     color: 0.3529, 0.07843, 0, 1
+#             BoxLayout:
+#                 orientation: "vertical"
+#                 size_hint_y: None
+#                 height: self.minimum_height
+#                 padding: app.scale(20)
+#                 spacing: app.scale(15)
+#                 canvas.before:
+#                     Color:
+#                         rgba: 1, 1, 1, 1  # White background
+#                     RoundedRectangle:
+#                         pos: self.pos
+#                         size: self.size
+#                         radius: [app.scale(20),]  # Rounded corners
+
+#                 BoxLayout:
+#                     orientation: "horizontal"
+#                     spacing: app.scale(10)
+                    
+#                     MDIconButton:
+#                         icon: "account-circle"
+#                         theme_icon_color: "Custom"
+#                         icon_color: "#B3DDF2"  # Light blue background
+#                         user_font_size: "48sp"  # Larger icon for profile
+#                         pos_hint: {"center_y": .5}
+#                         size_hint: None, None
+#                         size: app.scale(60), app.scale(60)
+#                         md_bg_color: "#E0F7FA"  # Circle background color
+#                         radius: [app.scale(30),]  # To make the icon round
+
+#                     MDLabel:
+#                         text: "Name"
+#                         font_style: "H6"
+#                         halign: "left"
+#                         valign: "middle"
+#                         pos_hint: {"center_y": .5}
+#                         color: 0, 0, 0, 1  # Black text
+
+#             BoxLayout:
+#                 orientation: "horizontal"
+#                 size_hint_y: None
+#                 height: app.scale(50)
+#                 padding: [app.scale(20), 0, app.scale(20), 0]
+#                 spacing: app.scale(10)
+#                 canvas.before:
+#                     Color:
+#                         rgba: 0, 0, 0, 1  # Black background
+#                     RoundedRectangle:
+#                         pos: self.pos
+#                         size: self.size
+#                         radius: [0, 0, app.scale(20), app.scale(20)]  # Rounded bottom corners
+                
+#                 MDLabel:
+#                     text: "Your Profile"
+#                     font_style: "Button"
+#                     halign: "left"
+#                     valign: "middle"
+#                     color: 1, 1, 1, 1  # White text
+
+#                 MDIconButton:
+#                     icon: "chevron-right"
+#                     theme_icon_color: "Custom"
+#                     icon_color: "#ffffff"  # White arrow icon
+#                     icon_size: app.scale(24)
+#                     pos_hint: {"center_y": .5}     
+
+#             # RelativeLayout:
+#             #     size_hint_y: None
+#             #     height: app.scale(120)  # Set height of profile image container
+
+#             #     Image:
+#             #         id: profile_image
+#             #         source: "images/category-pasta.png"
+#             #         size_hint: None, None
+#             #         size: app.scale(120), app.scale(120)  # Fixed size for the image
+#             #         allow_stretch: True
+#             #         keep_ratio: False
+#             #         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    
+#             #         canvas:
+#             #             Color:
+#             #                 rgba: 1, 1, 1, 1
+#             #             Ellipse:
+#             #                 size: self.size
+#             #                 pos: self.pos
+                        
+#             #             StencilPush
+#             #             Ellipse:
+#             #                 size: self.size
+#             #                 pos: self.pos
+#             #             StencilUse
+                        
+#             #             Color:
+#             #                 rgba: 1, 1, 1, 1
+#             #             Rectangle:
+#             #                 texture: self.texture
+#             #                 size: self.size
+#             #                 pos: self.pos
+                            
+#             #             StencilUnUse
+#             #             Ellipse:
+#             #                 size: self.size
+#             #                 pos: self.pos
+#             #             StencilPop
+
+#             MDLabel:
+#                 text: root.username
+#                 font_style: "H6"
+#                 halign: "center"
+
+#             MDLabel:
+#                 text: root.email
+#                 font_style: "Body1"
+#                 halign: "center"
+#                 color: 0.5, 0.5, 0.5, 1
+
+#             MDLabel:
+#                 text: root.phone
+#                 font_style: "Body1"
+#                 halign: "center"
+#                 color: 0.5, 0.5, 0.5, 1
+
+#             MDLabel:
+#                 text: root.bio
+#                 font_style: "Body2"
+#                 halign: "center"
+#                 padding: app.scale(10), app.scale(10)
+
+#             MDRaisedButton:
+#                 text: "Edit Profile"
+#                 size_hint_x: None
+#                 width: app.scale(200)
+#                 pos_hint: {"center_x": 0.5}
+#                 on_press: root.edit_profile()
+
+#             MDRaisedButton:
+#                 text: "Logout"
+#                 size_hint_x: None
+#                 width: app.scale(200)
+#                 pos_hint: {"center_x": 0.5}
+#                 on_press: root.logout()
+<AccountScreen>:
+    name: "profile"
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        canvas.before:
+            Color:
+                rgba: 160/255, 233/255, 255/255, 50/255  # Light blue background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        BoxLayout:
+            orientation: "vertical"
+            padding: [app.scale(15), app.scale(-10), app.scale(15), app.scale(15)]
+            spacing: app.scale(15)
+            size_hint_y: None
+            height: self.minimum_height  # This ensures the ScrollView knows the correct height to scroll
+
+            BoxLayout:
+                orientation: "vertical"
+                # padding: app.scale(10)
+                # spacing: app.scale(20)
+                size_hint_y: None
+                height: self.minimum_height  # This ensures the ScrollView knows the correct height to scroll
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: app.scale(40)
+
+                    MDIconButton:
+                        icon: "chevron-left"
+                        theme_icon_color: "Custom"
+                        icon_color: "#000000"  # Black arrow icon
+                        icon_size: app.scale(19)
+                        pos_hint: {"center_y": .4}
+                        padding: [app.scale(-20), 0, 0, 0]
+                        on_press: app.sm.current = "home"
+                # Acc card
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: self.minimum_height + app.scale(20)
+                    padding: app.scale(20)
+                    spacing: app.scale(15)
+                    canvas.before:
+                        Color:
+                            rgba: 255, 255, 255, 1  # White background
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [app.scale(20), app.scale(20), 0, 0]  # Rounded top left and top right corners
+
+                    BoxLayout:
+                        orientation: "horizontal"
+                        spacing: app.scale(10)
+                        
+                        # account_circle
+                        MDIconButton:
+                            icon: "account-circle"
+                            theme_icon_color: "Custom"
+                            icon_color: "#B3DDF2"  # Light blue background
+                            user_font_size: "48sp"  # Larger icon for profile
+                            pos_hint: {"center_y": .5}
+                            size_hint: None, None
+                            size: app.scale(60), app.scale(60)
+                            md_bg_color: "#E0F7FA"  # Circle background color
+                            # radius: [app.scale(30),]  # To make the icon round
+
+                        # Name
+                        MDLabel:
+                            text: root.username
+                            font_style: "H6"
+                            halign: "left"
+                            valign: "middle"
+                            pos_hint: {"center_y": .5}
+                            color: 0, 0, 0, 1  # Black text
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: app.scale(35)
+                    # padding: [app.scale(20), 0, app.scale(20), 0]
+                    spacing: app.scale(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0, 0, 0, 1  # Black background
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [0, 0, app.scale(20), app.scale(20)]  # Rounded bottom corners
+                    
+                    MDLabel:
+                        text: "Your Profile"
+                        font_style: "Button"
+                        halign: "left"
+                        valign: "middle"
+                        color: 1, 1, 1, 1  # White text
+                        padding: [app.scale(20), 0, 0, 0]
+
+                    MDIconButton:
+                        icon: "chevron-right"
+                        theme_icon_color: "Custom"
+                        icon_color: "#ffffff"  # White arrow icon
+                        icon_size: app.scale(24)
+                        halign: "right"
+                        pos_hint: {"center_y": .5}
+                        on_press: app.load_profile()
+            MDList:
+                padding: app.scale(10)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # Red background
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [app.scale(10), app.scale(10), app.scale(10), app.scale(10)]  # Rounded top left and top right corners
+
+                OneLineIconListItem:
+                    text: "Order History"
+                    on_release: app.show_order_history()  # Replace with your function
+                    IconLeftWidget:
+                        icon: "calendar-check"
+
+                OneLineIconListItem:
+                    text: "Customer Support"
+                    on_release: app.show_customer_support()  # Replace with your function
+                    IconLeftWidget:
+                        icon: "headset"
+                
+                OneLineIconListItem:
+                    text: "About"
+                    on_release: app.show_about()  # Replace with your function
+                    IconLeftWidget:
+                        icon: "information"
+                
+                OneLineIconListItem:
+                    text: "Feedback"
+                    on_release: app.show_feedback()  # Replace with your function
+                    IconLeftWidget:
+                        icon: "comment"
+                
+                OneLineIconListItem:
+                    text: "Settings"
+                    on_release: app.show_settings()  # Replace with your function
+                    IconLeftWidget:
+                        icon: "cog"
+                
+                OneLineIconListItem:
+                    text: "Logout"
+                    on_release: app.logout()  # Replace with your function
+                    IconLeftWidget:
+                        icon: "logout"
+
+            # MDSeparator:
+            #     height: dp(1)
+
+            # MDBoxLayout:
+            #     size_hint_y: None
+            #     height: dp(40)
+            #     md_bg_color: "#757575"
+
+<HomeScreen>:
+    ScrollView:
+        BoxLayout:
+            orientation: "vertical"
+            pos_hint: {"top": 1}
+            size_hint: (1, None)
+            padding: [app.scale(15), app.scale(20)]
+            height: self.minimum_height
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_x: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: app.scale(5)
+                pos_hint: {"top": 1}
+
+                MDTextField:
+                    id: search_bar
+                    hint_text: "Search Food Items"
+                    size_hint_x: 1
+                    mode: "round"
+                    icon_left: "magnify"
+                    pos_hint: {"top": 1}
+                    on_text_validate: app.load_search_results(root)
+                
+                MDIconButton:
+                    icon: "account"  # This is the icon for a profile or user account
+                    theme_icon_color: "Custom"
+                    icon_color: "#ffffff"
+                    md_bg_color: "#367591"
+                    icon_size: app.scale(10)
+                    pos_hint: {"center_y": 0.6}
+                    on_press: app.open_account() 
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, None
+                height: app.scale(30)
+                padding: [0, app.scale(40), 0, 0]
+                pos_hint: {"top": 1}
+                MDLabel:
+                    text_size:  self.size
+                    halign: "left"
+                    valign: "top"
+                    bold: True
+                    text: "Featured Food Items"
+                    color: 0.3529, 0.07843, 0, 1
+
+
+            AnchorLayout:
+                anchor_y: "top"
+                size_hint_y: None
+                height: app.scale(240)
+                padding: [0, app.scale(30), 0, app.scale(30)]
+                ScrollView:
+                    do_scroll_x: True
+                    do_scroll_y: False
+                    bar_width: app.scale(5)
+                    size_hint_y: 1.2
+                    BoxLayout:
+                        pos_hint: {"top": 1}
+                        orientation: "horizontal"
+                        size_hint: None, 1
+                        width: (root.width - 40) * 4.1
+                        spacing: app.scale(20)
+
+                        ItemLarge:
+                            source: "https://t3.ftcdn.net/jpg/02/12/66/32/240_F_212663294_PPIXEQMJVZSiKlwMsPBMruuf4Fcctkn9.jpg"
+                            title: "[color=#ffffff][b]Vegetable Sandwich[/b][/chttolor]"
+                            category: "[color=#808080][b]Vegetarian[/b][/color]"
+                            item_id: "2"
+                            width: root.width - 60
+
+                        ItemLarge:
+                            source: "https://t4.ftcdn.net/jpg/07/57/42/23/240_F_757422313_YmUNJw5N2a1onZkbMEdl9P6WO1DXbJhO.jpg"
+                            title: "[color=#ffffff][b]Chocolate Brownie[/b][/color]"
+                            category: "[color=#808080][b]Dessert[/b][/color]"
+                            item_id: "6"
+                            width: root.width - 60
+
+                        ItemLarge:
+                            source: "https://t4.ftcdn.net/jpg/05/85/17/03/240_F_585170352_7D9PjNXOvU3PAB4ynMRWpEavhBNuLG3J.jpg"
+                            title: "[color=#ffffff][b]Chicken Tikka Masala[/b][/color]"
+                            category: "[color=#808080][b]Starter[/b][/color]"
+                            item_id: "7"
+                            width: root.width - 60
+
+                        ItemLarge:
+                            source: "https://t3.ftcdn.net/jpg/07/23/32/42/240_F_723324248_3IzXtewCSiPHxo2ox5Zz69MBkE51Pjps.jpg"
+                            title: "[color=#ffffff][b]Fried Rice[/b][/color]"
+                            category: "[color=#808080][b]Breakfast[/b][/color]"
+                            item_id: "5"
+                            width: root.width - 60
+
+            BoxLayout:
+                orientation: "vertical"
+                height: app.scale(70)
+                size_hint_y: None
+                pos_hint: {"top": 1}
+                MDLabel:
+                    text_size: self.size
+                    halign: "left"
+                    valign: "middle"
+                    bold: True
+                    text: "Categories"
+                    color: 0.3529, 0.07843, 0, 1
+
+            AnchorLayout:
+                anchor_y: "top"
+                size_hint_y: None
+                height: app.scale(100)
+                ScrollView:
+                    do_scroll_x: True
+                    do_scroll_y: False
+                    bar_width: app.scale(5)
+                    size_hint_y: 1.2
+                    BoxLayout:
+                        orientation: "horizontal"
+                        pos_hint: {"top": 1}
+                        size_hint_x: None
+                        width: self.minimum_width
+
+                        MDIconButton:
+                            icon_size: app.scale(100)
+                            icon:"images/category-pasta.png"
+                            on_press: app.view_category("Pasta")
+                        MDIconButton:
+                            icon_size: app.scale(100)
+                            icon:"images/category-breakfast.png"
+                            on_press: app.view_category("Breakfast")
+                        MDIconButton:
+                            icon_size: app.scale(100)
+                            icon:"images/category-seafood.png"
+                            on_press: app.view_category("Seafood")
+                        MDIconButton:
+                            icon_size: app.scale(100)
+                            icon:"images/category-dessert.png"
+                            on_press: app.view_category("Dessert")
+                        MDIconButton:
+                            icon_size: app.scale(100)
+                            icon:"images/category-vegetarian.png"
+                            on_press: app.view_category("Vegetarian")
+                        MDIconButton:
+                            icon_size: app.scale(100)
+                            icon:"images/category-starter.png"
+                            on_press: app.view_category("Starter")
+
+            BoxLayout:
+                orientation: "vertical"
+                height: app.scale(100)
+                size_hint_y: None
+                pos_hint: {"top": 1}
+                MDLabel:
+                    text_size: self.size
+                    halign: "left"
+                    valign: "middle"
+                    bold: True
+                    text: "Popular Food Items"
+                    color: 0.3529, 0.07843, 0, 1
+
+
+
+            GridLayout:
+                cols: 2
+                height: self.minimum_height
+                size_hint_y: None
+                spacing: [app.scale(15), app.scale(15)]
+                ItemMedium:
+                    source: "https://t4.ftcdn.net/jpg/08/24/91/71/240_F_824917190_rfmzNyXz1kES6obVji2PxOXx5CLzQyfM.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Chicken Biryani[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Starter[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "1"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t3.ftcdn.net/jpg/02/12/66/32/240_F_212663294_PPIXEQMJVZSiKlwMsPBMruuf4Fcctkn9.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Vegetable Sandwich[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Vegetarian[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "2"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t3.ftcdn.net/jpg/07/33/35/20/240_F_733352022_Xw1fn7F75GwU9d49iM2fzzayemx5BN1Z.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Paneer Butter Masala[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Vegetarian[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "3"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t3.ftcdn.net/jpg/08/21/43/70/240_F_821437091_fZVVfyqTd91FHEdZYhqZ64Jx7UHt6pXm.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Margherita Pizza[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Pasta[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "4"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t3.ftcdn.net/jpg/07/23/32/42/240_F_723324248_3IzXtewCSiPHxo2ox5Zz69MBkE51Pjps.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Fried Rice[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Breakfast[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "5"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t4.ftcdn.net/jpg/07/57/42/23/240_F_757422313_YmUNJw5N2a1onZkbMEdl9P6WO1DXbJhO.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Chocolate Brownie[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Dessert[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "6"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t4.ftcdn.net/jpg/05/85/17/03/240_F_585170352_7D9PjNXOvU3PAB4ynMRWpEavhBNuLG3J.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Chicken Tikka Masala[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Starter[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "7"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t4.ftcdn.net/jpg/01/58/69/83/240_F_158698372_6TEPVMocLay9H2xGa3qyYAfHGsxi8Ft5.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Cheeseburger[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Starter[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "8"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t3.ftcdn.net/jpg/07/94/77/76/240_F_794777638_3xgRIqbCLh7vFyttA5A0YrOkFaEk8stD.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Pasta Alfredo[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Pasta[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "9"
+                    from_screen: "home"
+
+                ItemMedium:
+                    source: "https://t3.ftcdn.net/jpg/06/03/98/36/240_F_603983685_yQdt6Cw38M4QChBOvhUiGCC49JMnt12j.jpg"
+                    title: "[size=" + str(int(app.scale(11))) + "][color=#ffffff][b] Fish and Chips[/b][/color][/size]"
+                    category: "[size=10][color=#808080][b]Seafood[/b][/color][/size]"
+                    height: app.scale(150)
+                    size_hint_y: None
+                    item_id: "10"
+                    from_screen: "home"
+
+<LoadingScreen>:
+    MDSpinner:
+        size_hint: None, None
+        size: app.scale(46), app.scale(46)
+        pos_hint: {'center_x': .5, 'center_y': .5}
+
+<ErrorScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: app.scale(20)
+
+        MDIcon:
+            icon: "alert-circle"
+            size_hint: None, None
+            size: app.scale(64), app.scale(64)
+            pos_hint: {'center_x': .5}
+            theme_text_color: "Custom"
+            text_color: (1, 0, 0, 1)  # Red color for the error icon
+
+        MDLabel:
+            text: "Something went wrong"
+            halign: "center"
+            theme_text_color: "Primary"
+            font_style: "H5"
+        
+        MDLabel:
+            text: "Please try again later."
+            halign: "center"
+            theme_text_color: "Secondary"
+            font_style: "Body1"
+
+
+<CenteredSpinner>:
+    MDSpinner:
+        size_hint: None, None
+        size: app.scale(46), app.scale(46)
+        pos_hint: {'center_x': .5, 'center_y': .5}
+
+
+<ItemDetailScreen>:
+    name: "item_detail"
+    ScrollView:
+        canvas.before:
+            Color:
+                rgba: 160/255, 233/255, 255/255, 50/255   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: "vertical"
+            padding: [app.scale(15), app.scale(5), app.scale(15), app.scale(15)]
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: app.scale(5)
+
+            # Back button and screen title
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: app.scale(40)
+                pos_hint: {"top": 1}
+                
+                MDIconButton:
+                    icon: "chevron-left"
+                    theme_icon_color: "Custom"
+                    icon_color: "#000000"  # Black arrow icon
+                    icon_size: app.scale(19)
+                    pos_hint: {"center_y": .5}
+                    padding: [app.scale(-10), 0, 0, 0]
+                    on_press: app.item_detail_back()
+
+            # Image and title
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: [app.scale(10), app.scale(6), app.scale(10), app.scale(10)]
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [app.scale(10), app.scale(10), app.scale(10) , app.scale(10)]  # Rounded top left and top right corners
+
+                # Image
+                FitImage:
+                    source: root.img
+                    size_hint: None, None
+                    size: root.width - app.scale(40), root.height / 2
+                    pos_hint: {"center_x": 0.5}
+                    radius: [app.scale(10),]
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    # Title
+                    MDLabel:
+                        text: root.title
+                        bold: True
+                        font_style: "H6"
+                        halign: "left"
+                        color: "#000000"  # Black text
+                        size_hint_y: None
+                        height: self.texture_size[1] + app.scale(10)
+                        padding: [app.scale(10), app.scale(5)]
+                    
+                    MDIconButton:
+                        icon: "heart-outline"
+                        theme_icon_color: "Custom"
+                        icon_color: "#FF0000"  # Red heart icon                       
+                        icon_size: app.scale(15)
+                        pos_hint: {"center_y": .5}
+                        on_press: app.toggle_favorite()  # Placeholder for the favorite action
+
+                # Description
+                MDLabel:
+                    text: root.description
+                    font_style: "Body2"
+                    halign: "left"
+                    color: "#707070"  # Grey text
+                    size_hint_y: None
+                    height: self.texture_size[1] + app.scale(5)
+                    padding: [app.scale(10), 0, app.scale(10), 0]
+
+                # Canteen, Price, and Area
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: app.scale(10)
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: [app.scale(10), app.scale(10), 0, 0]
+
+                    MDLabel:
+                        text: f"Canteen: {root.canteen}"
+                        halign: "left"
+                        color: "#000000"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        padding: [0, 0, app.scale(5), 0]
+
+                    # MDLabel:
+                    #     text: f"Price: {root.price}"
+                    #     halign: "right"
+                    #     color: "#000000"
+                    #     size_hint_y: None
+                    #     height: self.texture_size[1]
+                    #     padding: [0, 0, app.scale(5), 0]
+
+                    MDLabel:
+                        text: f"{root.area}"
+                        halign: "right"
+                        color: "#000000"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        padding: [0, 0,app.scale(5), 0]
+            
+            # Quantity and Add to Cart Button
+            # BoxLayout:
+            #     orientation: "horizontal"
+            #     size_hint_y: None
+            #     height: app.scale(30)
+            #     padding: [app.scale(10), app.scale(10)]
+            #     spacing: app.scale(15)
+            #     # Increment/Decrement Box
+            #     BoxLayout:
+            #         orientation: "horizontal"
+            #         size_hint: 0.3, None
+            #         height: self.minimum_height
+            #         pos_hint: {"center_y": 0.5}
+            #         canvas.before:
+            #             Color:
+            #                 rgba: 0.95, 0.95, 0.95, 1  # Slightly off-white background
+            #             RoundedRectangle:
+            #                 pos: self.pos
+            #                 size: self.size
+            #                 radius: [app.scale(8), app.scale(8), app.scale(8), app.scale(8)]
+            #             # Adding a subtle shadow for a modern look
+            #             Color:
+            #                 rgba: 0, 0, 0, 0.05  # Very light shadow
+            #             RoundedRectangle:
+            #                 pos: [self.x + app.scale(2), self.y - app.scale(2)]
+            #                 size: self.size
+            #                 radius: [app.scale(8), app.scale(8), app.scale(8), app.scale(8)]
+
+            #         MDIconButton:
+            #             icon: "minus"
+            #             theme_icon_color: "Custom"
+            #             icon_color: "#FF3B3B"  # Red minus icon for visual pop
+            #             icon_size: app.scale(22)
+            #             on_press: app.decrement_quantity()  # Placeholder for decrement action
+
+            #         MDLabel:
+            #             id: quantity_label
+            #             text: "1"  # Default quantity
+            #             halign: "center"
+            #             valign: "middle"
+            #             bold: True
+            #             font_size: app.scale(22)
+            #             color: "#333333"  # Dark grey text for readability
+
+            #         MDIconButton:
+            #             icon: "plus"
+            #             theme_icon_color: "Custom"
+            #             icon_color: "#FF3B3B"  # Red plus icon for visual pop
+            #             icon_size: app.scale(22)
+            #             on_press: app.increment_quantity()  # Placeholder for increment action
+
+            #     # Add to Cart Button
+            #     MDRaisedButton:
+            #         pos_hint: {"center_y": 0.5}
+            #         text: f"Add item {root.price}"
+            #         md_bg_color: "#FF3B3B"  # Bold red background color
+            #         text_color: "#FFFFFF"  # Crisp white text color
+            #         font_size: app.scale(10)  # Adjust the font size for better visual balance
+            #         size_hint: 0.6, None
+            #         height: app.scale(50)
+            #         radius: [app.scale(8), app.scale(8), app.scale(8), app.scale(8)]
+            #         on_press: app.add_to_cart()  # Placeholder for add to cart action
+            #         # Adding a subtle shadow for a modern look
+            #         canvas.before:
+            #             Color:
+            #                 rgba: 0, 0, 0, 0.1  # Slightly darker shadow
+            #             RoundedRectangle:
+            #                 pos: [self.x + app.scale(2), self.y - app.scale(2)]
+            #                 size: self.size
+            #                 radius: [app.scale(8), app.scale(8), app.scale(8), app.scale(8)]
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: app.scale(30)
+                padding: [app.scale(5), app.scale(5)]
+                spacing: app.scale(5)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # Classic white background
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [app.scale(5), app.scale(5), app.scale(5), app.scale(5)]  # Rounded corners
+
+                # Increment/Decrement Box
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 0.2, None
+                    height: self.minimum_height - app.scale(6)
+                    pos_hint: {"center_y": 0.5}
+                    canvas.before:
+                        Color:
+                            rgba: 0.95, 0.95, 0.95, 1  # Light grey background
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [app.scale(5), app.scale(5), app.scale(5), app.scale(5)]  # Rounded corners
+
+                    MDIconButton:
+                        icon: "minus"
+                        pos_hint: {"center_y": 0.5}
+                        theme_icon_color: "Custom"
+                        icon_color: "#333333"  # Classic dark grey minus icon
+                        icon_size: app.scale(15)
+                        on_press: app.decrement_quantity()
+
+                    MDLabel:
+                        id: quantity_label
+                        text: "1"
+                        halign: "center"
+                        valign: "middle"
+                        bold: True
+                        font_style: "H6"
+                        color: "#333333"  # Dark grey text
+
+                    MDIconButton:
+                        icon: "plus"
+                        pos_hint: {"center_y": 0.5}
+                        theme_icon_color: "Custom"
+                        icon_color: "#333333"  # Classic dark grey plus icon
+                        icon_size: app.scale(15)
+                        on_press: app.increment_quantity()
+
+                # Add to Cart Button
+                MDRaisedButton:
+                    pos_hint: {"center_y": 0.5}
+                    text: f"Add item {root.price}"
+                    md_bg_color: "#333333"  # Dark grey background color
+                    text_color: "#FFFFFF"  # White text color for contrast
+                    font_style: "H6"
+                    bold: True
+                    size_hint: 0.7, None
+                    height: app.scale(50)
+                    radius: [0, 0, 0, 0]  # No rounded corners for a classic look
+                    on_press: app.add_to_cart()
+                    canvas.before:
+                        Color:
+                            rgba: 0.95, 0.95, 0.95, 1  # Light grey background
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+            GridLayout:
+                id: canteen_items_grid
+                cols: 1
+                padding: [0, app.scale(5), 0, 0]
+                size_hint_y: None
+                spacing: [app.scale(10), app.scale(10)]
+
+
+<SearchResultsScreen>:
+    ScrollView:
+        BoxLayout:
+            id: search_results_container
+            orientation: "vertical"
+            pos_hint: {"top": 1}
+            size_hint: (1, None)
+            padding: [app.scale(10), app.scale(20)]
+            height: self.minimum_height
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_x: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: app.scale(0)
+                pos_hint: {"top": 1}
+
+                MDIconButton:
+                    # icon: "arrow-left-drop-circle-outline"
+                    # theme_icon_color: "Custom"
+                    # icon_color: "#ffffff"
+                    # md_bg_color: "#5A1400"
+                    # icon_size: app.scale(19)
+                    # pos_hint: {"top": 1.05}
+                    icon_size: app.scale(19)
+                    pos_hint: {"top": 1.2}
+                    icon: "chevron-left"
+                    halgin: "left"
+                    on_press: app.sm.current = "home"
+
+                MDTextField:
+                    id: search_bar
+                    hint_text: "Search Food Items"
+                    size_hint_x: 1
+                    mode: "round"
+                    icon_left: "magnify"
+                    pos_hint: {"top": 1}
+                    on_text_validate: app.load_search_results(root)
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, None
+                height: app.scale(30)
+                pos_hint: {"top": 1}
+                padding: [0, app.scale(40), 0, 0]
+                MDLabel:
+                    id: search_results_label
+                    text_size: self.size
+                    halign: "left"
+                    valign: "top"
+                    bold: True
+                    text: '3 search results for "pizza"'
+                    color: 0.3529, 0.07843, 0, 1
+
+            GridLayout:
+                id: search_results_grid
+                cols: 2
+                padding: [0, app.scale(30), 0, 0]
+                size_hint_y: None
+                spacing: [app.scale(15), app.scale(15)]
+
+                # ItemMedium:
+                #     source: "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg"
+                #     title: "[size=14][color=#ffffff][b]Pizza Express Margherita[/b][/color][/size]"
+                #     category: "[size=10][color=#808080][b]Miscellaneous[/b][/color][/size]"
+                #     height: 150
+                #     size_hint_y: None
+                #     item_id: "53014"
+                #     from_screen: "home"
+                # ItemMedium:
+                #     source: "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg"
+                #     title: "[size=14][color=#ffffff][b]Pizza Express Margherita[/b][/color][/size]"
+                #     category: "[size=10][color=#808080][b]Miscellaneous[/b][/color][/size]"
+                #     height: 150
+                #     size_hint_y: None
+                #     item_id: "53014"
+                #     from_screen: "home"
+            #NoResults:
+    
+<CategoriesScreen>:
+    ScrollView:
+        BoxLayout:
+            orientation: "vertical"
+            pos_hint: {"top": 1}
+            size_hint: (1, None)
+            padding: [app.scale(15), app.scale(20)]
+            height: self.minimum_height
+            spacing: app.scale(10)
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_x: 1
+                size_hint_y: None
+                height: self.minimum_height
+                # spacing: app.scale(10)
+                pos_hint: {"top": 1}
+
+
+                MDIconButton:
+                    # icon: "arrow-left-drop-circle-outline"
+                    # theme_icon_color: "Custom"
+                    # icon_color: "#ffffff"
+                    # md_bg_color: "#5A1400"
+                    # pos_hint: {"center_y": .5}
+                    icon_size: app.scale(19)
+                    pos_hint: {"top": 0.97}
+                    icon: "chevron-left"
+                    halign: "left"
+                    on_press: app.sm.current = "home"
+
+                MDLabel:
+                    text_size: self.size
+                    halign: "center"
+                    valign: "top"
+                    bold: True
+                    font_size: app.scale(26)
+                    text: "Categories"
+                    pos_hint: {"top": 0.97}
+                    color: 0.3529, 0.07843, 0, 1     
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, None
+                height: self.minimum_height
+                pos_hint: {"top": 1}
+                padding: [0, app.scale(20), 0, app.scale(50)]
+                spacing: app.scale(40)
+                MDTabs:
+                    id: category_tabs
+                    background_color: "#ffffff"
+                    text_color_normal: 0.4666, 0.4666, 0.4666, 1
+                    text_color_active: 0.6117, 0.1333, 0
+                    indicator_color: 0.6117, 0.1333, 0
+                    on_tab_switch: root.on_tab_switch(*args)
+
+                    # Tab:
+                    #     title: "Tab 1"
+
+                    # Tab:
+                    #     title: "Tab 2"  
+
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, None
+                height: app.scale(30)
+                pos_hint: {"top": 1}
+                padding: [0, app.scale(40), 0, 0]
+                spacing: app.scale(40)
+
+                MDLabel:
+                    id: categories_results_label
+                    text_size: self.size
+                    halign: "left"
+                    valign: "bottom"
+                    bold: True
+                    text: '3 Food items in Category'
+                    color: 0.3529, 0.07843, 0, 1
+
+            GridLayout:
+                id: categories_results_grid
+                cols: 2
+                padding: [0, app.scale(30), 0, 0]
+                size_hint_y: None
+                spacing: [app.scale(15), app.scale(15)]
